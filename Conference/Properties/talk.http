@@ -1,0 +1,8 @@
+POST http://localhost:5202/talks
+Content-Type: application/json
+
+{
+    "title": "AI",
+    "speakerId": 1,
+    "time": "12:00 AM"
+}

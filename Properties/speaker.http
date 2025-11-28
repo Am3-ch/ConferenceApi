@@ -1,0 +1,7 @@
+POST http://localhost:5202/speakers
+Content-Type: application/json
+
+{
+    "firstName": "Humphrey",
+    "lastName": "Chama"
+}

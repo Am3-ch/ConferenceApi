@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {}
+    "c:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {
+    "c:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
+        "projectUniqueName": "c:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
         "projectName": "Conference",
-        "projectPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
+        "projectPath": "c:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
         "packagesPath": "C:\\Users\\Humphrey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\obj\\",
+        "outputPath": "c:\\Users\\Humphrey\\Desktop\\API's\\Conference\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Humphrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -51,24 +51,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.22, 8.0.22]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

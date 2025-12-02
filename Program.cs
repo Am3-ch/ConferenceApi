@@ -127,6 +127,7 @@ app.MapDelete("speakers/{id}", (int id) =>
 }
 );
 
+
 app.MapGet("/", () => "Welcome to our conference!!!");
 
 app.Run();

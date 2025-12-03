@@ -1,14 +1,24 @@
 using Conference.Dtos;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 const string GetSpeakerEndpointName = "Get Speaker";
 const string GetTalkEndpointName = "Get talk";
 
 List<SpeakerDto> speakers = [
-    new (1, "John", "Doe"),
-    new (2, "Jane", "Smith"),
+    new (1, "Humphrey", "Chama"),
+    new (2, "Jane", "Phiri"),
 ];
 
 List<TalkDto> talks =
@@ -73,57 +83,57 @@ app.MapPost("speakers", (CreateSpeakerDto newSpeaker) =>
 //PUT /talks
 app.MapPut("talks/{id}", (int id, UpdateTalkDto updatedTalk) =>
 {
-   var index = talks.FindIndex(talks => talks.Id == id);
+    var index = talks.FindIndex(talks => talks.Id == id);
 
-   if(index == -1)
-   {
-      return Results.NotFound();
-   }
+    if (index == -1)
+    {
+        return Results.NotFound();
+    }
 
-   talks[index] = new TalkDto(
-    id,
-    updatedTalk.Title,
-    updatedTalk.SpeakerId,
-    updatedTalk.time
-   );
+    talks[index] = new TalkDto(
+     id,
+     updatedTalk.Title,
+     updatedTalk.SpeakerId,
+     updatedTalk.time
+    );
 
-   return Results.NoContent();
+    return Results.NoContent();
 });
 
 //PUT /speakers
 app.MapPut("speakers/{id}", (int id, UpdateSpeakerDto updatedSpeaker) =>
 {
-   var index = speakers.FindIndex(speakers => speakers.Id == id);
+    var index = speakers.FindIndex(speakers => speakers.Id == id);
 
-   if(index == -1)
-   {
-      return Results.NotFound();
-   }
+    if (index == -1)
+    {
+        return Results.NotFound();
+    }
 
-   speakers[index] = new SpeakerDto(
-    id,
-    updatedSpeaker.FirstName,
-    updatedSpeaker.LastName
-   );
+    speakers[index] = new SpeakerDto(
+     id,
+     updatedSpeaker.FirstName,
+     updatedSpeaker.LastName
+    );
 
-   return Results.NoContent();
+    return Results.NoContent();
 });
 
 //DELETE /talks/1
 app.MapDelete("talks/{id}", (int id) =>
 {
-   talks.RemoveAll(talkId => talkId.Id == id);
+    talks.RemoveAll(talkId => talkId.Id == id);
 
-   return Results.NoContent();
+    return Results.NoContent();
 }
 );
 
 //DELETE /speakers/1
 app.MapDelete("speakers/{id}", (int id) =>
 {
-   talks.RemoveAll(speakerId => speakerId.Id == id);
+    talks.RemoveAll(speakerId => speakerId.Id == id);
 
-   return Results.NoContent();
+    return Results.NoContent();
 }
 );
 

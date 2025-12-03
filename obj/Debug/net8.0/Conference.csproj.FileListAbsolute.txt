@@ -27,3 +27,10 @@ C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\refint\Conference.dl
 C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\Conference.pdb
 C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\Conference.genruntimeconfig.cache
 C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\ref\Conference.dll
+C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\Conference.csproj.AssemblyReference.cache
+C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\Conference.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Humphrey\Desktop\API's\Conference\obj\Debug\net8.0\Conference.csproj.Up2Date

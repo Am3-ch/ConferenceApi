@@ -101,8 +101,8 @@ public class ProtectedController : ControllerBase
     }
 
     //PUT talk (update or edit a specific talk)
-    [HttpPost("talks/{id}")]
-    public async Task<IResult> UpdateTalk([FromBody] int id, UpdateTalkDto updatedTalk)
+    [HttpPut("talks/{id}")]
+    public async Task<IResult> UpdateTalk([FromRoute] int id, [FromBody] UpdateTalkDto updatedTalk)
     {
         var index = talks.FindIndex(talks => talks.Id == id);
 
@@ -122,7 +122,8 @@ public class ProtectedController : ControllerBase
     }
 
     //PUT speaker
-    public async Task<IResult> UpdateSpeaker([FromBody] int id, UpdateSpeakerDto updatedSpeaker)
+    [HttpPut("speakers/{id}")]
+    public async Task<IResult> UpdateSpeaker([FromRoute] int id, [FromBody] UpdateSpeakerDto updatedSpeaker)
     {
         var index = speakers.FindIndex(speakers => speakers.Id == id);
 
@@ -141,8 +142,8 @@ public class ProtectedController : ControllerBase
     }
 
     //DELETE speaker
-    [HttpDelete]
-    public async Task<IResult> DeleteTalk([FromBody] int id)
+    [HttpDelete("talks/{id}")]
+    public async Task<IResult> DeleteTalk([FromRoute] int id)
     {
         talks.RemoveAll(talkId => talkId.Id == id);
 
@@ -150,8 +151,8 @@ public class ProtectedController : ControllerBase
     }
 
     //DELETE speaker
-    [HttpDelete]
-    public async Task<IResult> DeleteSpeaker([FromBody] int id)
+    [HttpDelete("speakers/{id}")]
+    public async Task<IResult> DeleteSpeaker([FromRoute] int id)
     {
         talks.RemoveAll(speakerId => speakerId.Id == id);
 

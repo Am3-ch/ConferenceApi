@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
+using System.Security.Claims;
 
 public class AuthService
 {
@@ -14,39 +14,49 @@ public class AuthService
 
     public async Task<LoginResponse> Login(LoginRequest request)
     {
-        // Find user in database
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.Username == request.Username);
 
         if (user == null)
             throw new UnauthorizedAccessException("Invalid username or password");
 
-        // Verify password
         if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             throw new UnauthorizedAccessException("Invalid username or password");
 
-        var token = _jwtService.GenerateToken(user);
+        var accessToken = _jwtService.GenerateToken(user);
+        var refreshToken = _jwtService.GenerateRefreshToken();
+
+        // Save refresh token to database
+        var refreshTokenEntity = new RefreshToken
+        {
+            Token = refreshToken,
+            UserId = user.Id,
+            ExpiresAt = DateTime.UtcNow.AddDays(7), // 7 days
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.RefreshTokens.Add(refreshTokenEntity);
+        await _context.SaveChangesAsync();
 
         return new LoginResponse
         {
-            Token = token,
-            Username = user.Username
+            Token = accessToken,
+            RefreshToken = refreshToken,
+            Username = user.Username,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(15)
         };
     }
+
     public async Task<LoginResponse> Register(RegisterRequest request)
     {
-        // Check if username already exists
         if (await _context.Users.AnyAsync(u => u.Username == request.Username))
             throw new InvalidOperationException("Username already exists");
 
-        // Check if email already exists
         if (await _context.Users.AnyAsync(u => u.Email == request.Email))
             throw new InvalidOperationException("Email already exists");
 
-        // Hash the password
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-        // Create new user
         var user = new User
         {
             Username = request.Username,
@@ -58,13 +68,80 @@ public class AuthService
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        // Generate token for the new user
-        var token = _jwtService.GenerateToken(user);
+        var accessToken = _jwtService.GenerateToken(user);
+        var refreshToken = _jwtService.GenerateRefreshToken();
+
+        var refreshTokenEntity = new RefreshToken
+        {
+            Token = refreshToken,
+            UserId = user.Id,
+            ExpiresAt = DateTime.UtcNow.AddDays(7),
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.RefreshTokens.Add(refreshTokenEntity);
+        await _context.SaveChangesAsync();
 
         return new LoginResponse
         {
-            Token = token,
-            Username = user.Username
+            Token = accessToken,
+            RefreshToken = refreshToken,
+            Username = user.Username,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(15)
         };
+    }
+
+    public async Task<LoginResponse> RefreshToken(RefreshTokenRequest request)
+    {
+        var refreshToken = await _context.RefreshTokens
+            .Include(rt => rt.User)
+            .FirstOrDefaultAsync(rt => rt.Token == request.RefreshToken);
+
+        if (refreshToken == null)
+            throw new UnauthorizedAccessException("Invalid refresh token");
+
+        if (!refreshToken.IsActive)
+            throw new UnauthorizedAccessException("Refresh token is expired or revoked");
+
+        // Generate new tokens
+        var newAccessToken = _jwtService.GenerateToken(refreshToken.User);
+        var newRefreshToken = _jwtService.GenerateRefreshToken();
+
+        // Revoke old refresh token
+        refreshToken.IsRevoked = true;
+
+        // Create new refresh token
+        var newRefreshTokenEntity = new RefreshToken
+        {
+            Token = newRefreshToken,
+            UserId = refreshToken.UserId,
+            ExpiresAt = DateTime.UtcNow.AddDays(7),
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.RefreshTokens.Add(newRefreshTokenEntity);
+        await _context.SaveChangesAsync();
+
+        return new LoginResponse
+        {
+            Token = newAccessToken,
+            RefreshToken = newRefreshToken,
+            Username = refreshToken.User.Username,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(15)
+        };
+    }
+
+    public async Task<bool> RevokeToken(string refreshToken)
+    {
+        var token = await _context.RefreshTokens
+            .FirstOrDefaultAsync(rt => rt.Token == refreshToken);
+
+        if (token == null || !token.IsActive)
+            return false;
+
+        token.IsRevoked = true;
+        await _context.SaveChangesAsync();
+
+        return true;
     }
 }

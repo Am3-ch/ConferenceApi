@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<TokenCleanupService>();
 
 //Database Context
 builder.Services.AddDbContext<AppDbContext>(options =>

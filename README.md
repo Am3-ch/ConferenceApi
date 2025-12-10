@@ -27,3 +27,6 @@ How to use?
 4) DELETE METHOD
    c) api/protected/talks/{id}
    d) api/protected/speakers/{id
+5) SWAGGER
+   a) http://localhost:8080/swagger/index.html
+   b) http://localhost:8080/swagger/v1/swagger.json

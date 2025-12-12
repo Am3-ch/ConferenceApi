@@ -1,0 +1,76 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Pp]ublish/
+publish/
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Testing
+TestResults/
+[Cc]overage/
+*.coverage
+*.coveragexml
+
+# Docker files (prevent recursive issues)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Local settings and secrets
+appsettings.*.local.json
+appsettings.Development.json
+secrets.json
+.env
+.env.*
+local.settings.json
+
+# SSL certificates
+*.pfx
+*.pem
+*.key
+*.crt
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.mdf
+*.ldf
+
+# Misc
+Thumbs.db
+.DS_Store
+*.cache
+healthchecksdb
+

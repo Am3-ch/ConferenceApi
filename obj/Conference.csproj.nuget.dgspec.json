@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {}
+    "C:\\Users\\ZBOOK\\github-repos\\ConferenceApi\\Conference.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj": {
+    "C:\\Users\\ZBOOK\\github-repos\\ConferenceApi\\Conference.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
+        "projectUniqueName": "C:\\Users\\ZBOOK\\github-repos\\ConferenceApi\\Conference.csproj",
         "projectName": "Conference",
-        "projectPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
-        "packagesPath": "C:\\Users\\Humphrey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\obj\\",
+        "projectPath": "C:\\Users\\ZBOOK\\github-repos\\ConferenceApi\\Conference.csproj",
+        "packagesPath": "C:\\Users\\ZBOOK\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ZBOOK\\github-repos\\ConferenceApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Humphrey\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ZBOOK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,10 +66,6 @@
               "target": "Package",
               "version": "[10.0.0, )"
             },
-            "Microsoft.Extensions.Configuration.Json": {
-              "target": "Package",
-              "version": "[10.0.0, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[10.0.0, )"
@@ -96,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

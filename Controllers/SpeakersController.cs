@@ -5,6 +5,8 @@ using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
+[Authorize(Roles = "Admin, Speaker")]
 public class SpeakersController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -66,8 +68,7 @@ public class SpeakersController : ControllerBase
         return Ok(speaker);
     }
 
-    // POST: api/speakers
-    [Authorize]
+    // POST: api/auth/speakers
     [HttpPost]
     public async Task<ActionResult<SpeakerResponseDto>> CreateSpeaker([FromBody] CreateSpeakerDto dto)
     {
@@ -121,7 +122,6 @@ public class SpeakersController : ControllerBase
     }
 
     // PUT: api/speakers/5
-    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateSpeaker(int id, [FromBody] CreateSpeakerDto dto)
     {

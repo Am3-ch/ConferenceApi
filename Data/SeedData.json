@@ -1,0 +1,152 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@conference.com",
+      "password": "Admin@123",
+      "firstName": "System",
+      "lastName": "Administrator",
+      "role": "Admin"
+    },
+    {
+      "username": "jdoe",
+      "email": "jane.doe@techcorp.com",
+      "password": "Speaker@123",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "role": "Speaker"
+    },
+    {
+      "username": "mchen",
+      "email": "michael.chen@devstudio.io",
+      "password": "Speaker@123",
+      "firstName": "Michael",
+      "lastName": "Chen",
+      "role": "Speaker"
+    },
+    {
+      "username": "sarah_k",
+      "email": "sarah.kumar@cloudops.net",
+      "password": "Speaker@123",
+      "firstName": "Sarah",
+      "lastName": "Kumar",
+      "role": "Speaker"
+    },
+    {
+      "username": "attendee1",
+      "email": "john.smith@email.com",
+      "password": "Attendee@123",
+      "firstName": "John",
+      "lastName": "Smith",
+      "role": "Attendee"
+    },
+    {
+      "username": "attendee2",
+      "email": "emily.wilson@email.com",
+      "password": "Attendee@123",
+      "firstName": "Emily",
+      "lastName": "Wilson",
+      "role": "Attendee"
+    }
+  ],
+  "speakers": [
+    {
+      "username": "jdoe",
+      "fullName": "Jane Doe",
+      "bio": "Senior Software Architect with 15+ years of experience in distributed systems and cloud-native applications. Previously led engineering teams at major tech companies and is passionate about mentoring the next generation of developers.",
+      "company": "TechCorp Inc.",
+      "jobTitle": "Senior Software Architect",
+      "twitterHandle": "@janedoe_tech",
+      "linkedInUrl": "https://linkedin.com/in/janedoe",
+      "websiteUrl": "https://janedoe.dev"
+    },
+    {
+      "username": "mchen",
+      "fullName": "Michael Chen",
+      "bio": "Full-stack developer and open-source contributor specializing in React, Node.js, and modern web technologies. Author of several popular npm packages and frequent conference speaker on frontend performance optimization.",
+      "company": "DevStudio",
+      "jobTitle": "Lead Frontend Engineer",
+      "twitterHandle": "@mchen_dev",
+      "linkedInUrl": "https://linkedin.com/in/michaelchen"
+    },
+    {
+      "username": "sarah_k",
+      "fullName": "Sarah Kumar",
+      "bio": "DevOps engineer and Kubernetes expert with a focus on building resilient, scalable infrastructure. AWS and Azure certified, with hands-on experience implementing CI/CD pipelines for Fortune 500 companies.",
+      "company": "CloudOps Solutions",
+      "jobTitle": "Principal DevOps Engineer",
+      "twitterHandle": "@sarah_cloudops",
+      "linkedInUrl": "https://linkedin.com/in/sarahkumar",
+      "websiteUrl": "https://sarahkumar.io"
+    }
+  ],
+  "talks": [
+    {
+      "speakerUsername": "jdoe",
+      "title": "Building Scalable Microservices with .NET",
+      "description": "Learn how to design and implement microservices architecture using .NET 8. We'll cover service communication patterns, distributed tracing, resilience strategies with Polly, and best practices for deploying to Kubernetes. By the end of this talk, you'll have a solid foundation for breaking down monolithic applications into manageable, scalable services.",
+      "scheduledAtOffset": 1,
+      "durationMinutes": 60,
+      "room": "Main Hall A",
+      "level": "Intermediate",
+      "category": "Backend Development",
+      "maxAttendees": 150
+    },
+    {
+      "speakerUsername": "jdoe",
+      "title": "Event-Driven Architecture Patterns",
+      "description": "Explore the world of event-driven systems and learn how to implement them effectively. This session covers message brokers, event sourcing, CQRS, and how to handle eventual consistency. Real-world examples from production systems will demonstrate both the benefits and challenges of this architectural style.",
+      "scheduledAtOffset": 2,
+      "durationMinutes": 45,
+      "room": "Workshop Room B",
+      "level": "Advanced",
+      "category": "Architecture",
+      "maxAttendees": 80
+    },
+    {
+      "speakerUsername": "mchen",
+      "title": "Modern React Performance Optimization",
+      "description": "Dive deep into React performance optimization techniques that actually matter. We'll examine React DevTools profiling, code splitting strategies, memoization best practices, and how to identify and fix common performance bottlenecks. Includes live debugging sessions with real-world examples.",
+      "scheduledAtOffset": 1,
+      "durationMinutes": 60,
+      "room": "Tech Theater",
+      "level": "Intermediate",
+      "category": "Frontend Development",
+      "maxAttendees": 120
+    },
+    {
+      "speakerUsername": "mchen",
+      "title": "Building Design Systems with React and TypeScript",
+      "description": "Learn how to create a scalable, maintainable design system from scratch. We'll cover component architecture, theming strategies, accessibility considerations, and documentation with Storybook. Walk away with a template you can use in your own projects.",
+      "scheduledAtOffset": 3,
+      "durationMinutes": 90,
+      "room": "Workshop Room A",
+      "level": "Beginner",
+      "category": "Frontend Development",
+      "maxAttendees": 60
+    },
+    {
+      "speakerUsername": "sarah_k",
+      "title": "Kubernetes in Production: Lessons Learned",
+      "description": "After running Kubernetes in production for 5 years, I've learned what works and what doesn't. This talk covers cluster architecture decisions, security hardening, cost optimization, and disaster recovery strategies. Honest discussion of failures and how we recovered from them.",
+      "scheduledAtOffset": 2,
+      "durationMinutes": 60,
+      "room": "Main Hall A",
+      "level": "Advanced",
+      "category": "DevOps",
+      "maxAttendees": 150
+    },
+    {
+      "speakerUsername": "sarah_k",
+      "title": "GitOps: Infrastructure as Code Done Right",
+      "description": "Discover how GitOps transforms infrastructure management by treating Git as the single source of truth. We'll implement a complete GitOps workflow using ArgoCD, covering environment promotion, secret management, and rollback strategies. Hands-on examples with a real infrastructure repository.",
+      "scheduledAtOffset": 4,
+      "durationMinutes": 75,
+      "room": "Tech Theater",
+      "level": "Intermediate",
+      "category": "DevOps",
+      "maxAttendees": 100
+    }
+  ]
+}
+

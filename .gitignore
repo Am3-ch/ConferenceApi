@@ -1,0 +1,137 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Rider
+.idea/
+
+# User-specific files
+*.userprefs
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+!**/[Pp]ackages/repositories.config
+.nuget/
+project.lock.json
+project.fragment.lock.json
+*.cache
+
+# ASP.NET Core
+wwwroot/lib/
+**/wwwroot/dist/
+healthchecksdb
+MiniProfiler*.json
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Publishing
+[Pp]ublish/
+*.Publish.xml
+publish/
+
+# Entity Framework
+*.mdf
+*.ldf
+*.bak
+
+# Secrets and environment files
+appsettings.*.local.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# Local database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# SSL certificates
+*.pfx
+*.pem
+*.key
+*.crt
+
+# Crash logs
+crash.log
+crashdump.log
+
+# Application Insights
+ApplicationInsights.config
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
+
+# dotnet tool manifest
+.config/dotnet-tools.json
+
+# Testing
+TestResults/
+[Cc]overage/
+*.coverage
+*.coveragexml
+coverlet.runsettings
+
+# StyleCop
+StyleCopReport.xml
+
+# Docker (local overrides)
+docker-compose.override.yml
+docker-compose.*.local.yml
+
+# Azure Functions
+local.settings.json
+
+# Service Fabric
+*.sfpkg
+*.sflog
+ServiceFabricBackup/
+
+# User secrets
+**/Properties/launchSettings.local.json
+
+# Documentation (per user rules)
+docs/
+

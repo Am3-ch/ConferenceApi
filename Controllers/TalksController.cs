@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class TalksController : ControllerBase
 {

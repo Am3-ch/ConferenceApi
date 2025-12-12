@@ -381,3 +381,4 @@ C:\Users\ZBOOK\github-repos\ConferenceApi\obj\Debug\net10.0\Conference.pdb
 C:\Users\ZBOOK\github-repos\ConferenceApi\obj\Debug\net10.0\Conference.genruntimeconfig.cache
 C:\Users\ZBOOK\github-repos\ConferenceApi\obj\Debug\net10.0\ref\Conference.dll
 C:\Users\ZBOOK\github-repos\ConferenceApi\bin\Debug\net10.0\Data\SeedData.json
+C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net10.0\Data\SeedData.json

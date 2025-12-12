@@ -4,9 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 [ApiController]
-[Route("api/[controller]")]
 [Authorize]
-[Authorize(Roles = "Admin, Speaker")]
+[Route("api/[controller]")]
 public class SpeakersController : ControllerBase
 {
     private readonly AppDbContext _context;

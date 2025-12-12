@@ -2,9 +2,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DotNetEnv;
 using Microsoft.AspNetCore.Authorization;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using ConferenceApi.Services;
+
+// Load environment variables from the .env file
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +46,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+// Load environment variables from the .env file
+Env.Load();
+
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -72,6 +81,12 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<AppDbContext>();
+        var startupLogger = services.GetRequiredService<ILogger<Program>>();
+
+        // Connectivity check (helps distinguish DNS/network issues from migration issues)
+        var canConnect = await context.Database.CanConnectAsync();
+        startupLogger.LogInformation("Database connectivity check (CanConnect): {CanConnect}", canConnect);
+
         context.Database.Migrate();
 
         // Seed the database with initial data

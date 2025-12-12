@@ -135,3 +135,13 @@ ServiceFabricBackup/
 # Documentation (per user rules)
 docs/
 
+# Secrets
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+.env
+*.env
+
+# User-specific files
+*.user
+*.suo

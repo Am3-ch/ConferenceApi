@@ -1,7 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-public class CreateSpeakerDto
+public class Speaker
 {
+    public int Id { get; set; }
+    
+    [Required]
+    public int UserId { get; set; }
+    
     [Required]
     [MaxLength(200)]
     public required string FullName { get; set; }
@@ -27,18 +32,12 @@ public class CreateSpeakerDto
     
     [MaxLength(200)]
     public string? WebsiteUrl { get; set; }
-}
-
-public class SpeakerResponseDto
-{
-    public int Id { get; set; }
-    public required string FullName { get; set; }
-    public required string Bio { get; set; }
-    public string? Company { get; set; }
-    public string? JobTitle { get; set; }
-    public string? ProfileImageUrl { get; set; }
-    public string? TwitterHandle { get; set; }
-    public string? LinkedInUrl { get; set; }
-    public string? WebsiteUrl { get; set; }
-    public int TotalTalks { get; set; }
+    
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public DateTime? UpdatedAt { get; set; }
+    
+    // Navigation properties
+    public User User { get; set; } = null!;
+    public ICollection<Talk> Talks { get; set; } = new List<Talk>();
 }

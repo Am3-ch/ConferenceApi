@@ -382,5 +382,8 @@ C:\Users\ZBOOK\github-repos\ConferenceApi\obj\Debug\net10.0\Conference.genruntim
 C:\Users\ZBOOK\github-repos\ConferenceApi\obj\Debug\net10.0\ref\Conference.dll
 C:\Users\ZBOOK\github-repos\ConferenceApi\bin\Debug\net10.0\Data\SeedData.json
 C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net10.0\Data\SeedData.json
+<<<<<<< HEAD
 C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net10.0\DotNetEnv.dll
 C:\Users\Humphrey\Desktop\API's\Conference\bin\Debug\net10.0\Sprache.dll
+=======
+>>>>>>> 803d6c965146c977015426daf82630d9feac04d8

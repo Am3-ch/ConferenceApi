@@ -3911,11 +3911,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
+      "projectUniqueName": "C:\\Users\\Humphrey\\desktop\\api's\\conference\\Conference.csproj",
       "projectName": "Conference",
-      "projectPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\Conference.csproj",
+      "projectPath": "C:\\Users\\Humphrey\\desktop\\api's\\conference\\Conference.csproj",
       "packagesPath": "C:\\Users\\Humphrey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Humphrey\\Desktop\\API's\\Conference\\obj\\",
+      "outputPath": "C:\\Users\\Humphrey\\desktop\\api's\\conference\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Humphrey\\AppData\\Roaming\\NuGet\\NuGet.Config"

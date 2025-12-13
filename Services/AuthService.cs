@@ -1,4 +1,4 @@
-clsusing Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 public class AuthService
@@ -140,6 +140,77 @@ public class AuthService
             return false;
 
         token.IsRevoked = true;
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task<bool> UpdatePassword(int userId, UpdatePasswordRequest request)
+    {
+        var user = await _context.Users.FindAsync(userId);
+        
+        if (user == null)
+            throw new InvalidOperationException("User not found");
+
+        // Verify current password
+        if (!BCrypt.Net.BCrypt.Verify(request.CurrentPassword, user.PasswordHash))
+            throw new UnauthorizedAccessException("Current password is incorrect");
+
+        // Hash and save new password
+        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+        user.UpdatedAt = DateTime.UtcNow;
+
+        // Revoke all existing refresh tokens for security
+        var userTokens = await _context.RefreshTokens
+            .Where(rt => rt.UserId == userId && !rt.IsRevoked)
+            .ToListAsync();
+        
+        foreach (var token in userTokens)
+        {
+            token.IsRevoked = true;
+        }
+
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
+    public async Task<bool> DeleteUser(int userId, string password)
+    {
+        var user = await _context.Users
+            .Include(u => u.RefreshTokens)
+            .Include(u => u.Speaker)
+                .ThenInclude(s => s!.Talks)
+            .Include(u => u.TalkRegistrations)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+        
+        if (user == null)
+            throw new InvalidOperationException("User not found");
+
+        // Verify password before deletion
+        if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            throw new UnauthorizedAccessException("Password is incorrect");
+
+        // Remove all related data
+        _context.RefreshTokens.RemoveRange(user.RefreshTokens);
+        _context.TalkRegistrations.RemoveRange(user.TalkRegistrations);
+        
+        if (user.Speaker != null)
+        {
+            // Update talks to remove speaker reference or delete them
+            foreach (var talk in user.Speaker.Talks)
+            {
+                talk.CurrentAttendees = 0;
+                // Remove all registrations for this talk
+                var talkRegistrations = await _context.TalkRegistrations
+                    .Where(tr => tr.TalkId == talk.Id)
+                    .ToListAsync();
+                _context.TalkRegistrations.RemoveRange(talkRegistrations);
+            }
+            _context.Talks.RemoveRange(user.Speaker.Talks);
+            _context.Speakers.Remove(user.Speaker);
+        }
+
+        _context.Users.Remove(user);
         await _context.SaveChangesAsync();
 
         return true;

@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "frontend/src/app/page.tsx"
+            "destination": "frontend/src/app/"
         }
     ]
 }

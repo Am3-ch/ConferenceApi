@@ -1,0 +1,6 @@
+{
+  // This repo has separate apps; ensure the editor uses the frontend's pinned TypeScript version.
+  "typescript.tsdk": "frontend/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
+

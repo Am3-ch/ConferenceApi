@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "frontend/src/app/page.tsx"
+        }
+    ]
+}

@@ -58,6 +58,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithOrigins(
+                "https://conference-api-frontend-iumt.vercel.app/",
+                "http://localhost:3000"
+            ));
+});
+
+
+
+
 // Load environment variables from the .env file
 Env.Load();
 
@@ -65,11 +80,14 @@ Env.Load();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseCors("AllowFrontend");
+/*if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}*/
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // CORS must come first to handle preflight OPTIONS requests
 app.UseCors("Web");
@@ -79,10 +97,10 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapGet("/", () => "Welcome to our conference!!!");
 
-if (!app.Environment.IsDevelopment())
+/*if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
-}
+}*/
 
 app.UseAuthentication();
 app.UseAuthorization();
